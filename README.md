@@ -14,16 +14,14 @@ This project demonstrates a robust automation framework for testing Windows desk
 
 🛠 Easy to extend for regression or smoke testing
 
-🖥 Compatible with Windows apps (e.g., EXE, MFC, WinForms, WPF)
+🖥 Compatible with Windows apps (e.g., .EXE)
 
 🛠 Tech Stack
 Component	Tool/Library
 Language	Python 3.x
-Automation Tool	pywinauto
-Test Runner	pytest
-Reporting	pytest-html
-Data Handling	JSON / Excel (via openpyxl or pandas)
-Logging	Python logging module
+Automation Tool	pywinauto pyautogui
+Data Handling	JSON / Excel (via JSON)
+
 
 🚀 Getting Started
 Clone the repository:
