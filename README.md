@@ -6,10 +6,6 @@ This project demonstrates a robust automation framework for testing Windows desk
 
 🎯 Built using Pywinauto for GUI automation
 
-🧪 Integrated with Pytest for test execution and assertions
-
-📊 Generates HTML test reports using pytest-html
-
 🔁 Supports both manual and data-driven testing
 
 🛠 Easy to extend for regression or smoke testing
