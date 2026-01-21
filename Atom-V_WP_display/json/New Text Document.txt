@@ -1,0 +1,25 @@
+{
+    "LXSProgrammer_exe_path_dict": "D:\\Kitchen\\flash_tool\\Atom_V\\LXSProgrammer_Atom-V_Disp\\LXSProgrammer.exe",
+    "atom_v_wp_display_bin_path_dict": "D:\\FOTA FWs\\DIsplay_Sub\\ATOM-V_WaterPurifier_Display\\SW31100_for_LG_REF_Atom_V_SAA43766201_0xFB67.hex"
+}
+
+ATOM-V Display
+
+D:\Kitchen\Tested\ATOM-V_WaterPurifier_Display\SW31100_for_LG_REF_Atom_V_SAA43766201_0xFB67.hex
+
+
+C:\Users\vilvakannan.velusamy\PycharmProjects\PythonProject_flash_tool\Atom-V_WP_display\atom_v_wp_display_lx_programmer.py
+
+
+C:\Users\vilvakannan.velusamy\PycharmProjects\PythonProject_flash_tool\Atom-V_WP_display\json\config_json.json
+
+ATOM-V Main
+
+C:\Users\vilvakannan.velusamy\PycharmProjects\PythonProject_flash_tool\Atom-V_WP_main\atom_v_wp_main.py
+
+C:\Users\vilvakannan.velusamy\PycharmProjects\PythonProject_flash_tool\Atom-V_WP_main\json\config_json.json
+
+C:\Users\vilvakannan.velusamy\PycharmProjects\PythonProject_flash_tool\Atom-V_WP_main\atom_v_wp_main.py
+
+
+
