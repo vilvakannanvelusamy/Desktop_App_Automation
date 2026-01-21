@@ -1,0 +1,17 @@
+# Large Binaries (Prevents the 50MB warnings)
+*.exe
+*.msi
+
+# Python Environment and Cache
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+
+# PyCharm Settings
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
