@@ -15,7 +15,7 @@ This project demonstrates a robust automation framework for testing Windows desk
 🛠 Tech Stack
 Component	Tool/Library
 Language	Python 3.x
-Automation Tool	pywinauto pyautogui
+Automation Tool	pywinauto, pyautogui
 Data Handling	JSON / Excel (via JSON)
 
 
