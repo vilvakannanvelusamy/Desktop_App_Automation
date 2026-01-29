@@ -3,8 +3,8 @@
     "driver_code_path_dict": "C:\\Users\\vilvakannan.velusamy\\Documents\\Renesas Flash Programmer\\Renesas Flash Programmer01\\V3.11\\kimchi_kitchen\\Kitchen_Kimchi.rpj",
     "ih_cooktop_disp_bin_path_dict": "D:/FOTA FWs/IH_COOKTOP/Tested/V1_FullBridge_IH_Merged_0x061FEABE.hex",
     "flash_script_path": "C:/Users/vilvakannan.velusamy/PycharmProjects/flash_tool_auto/IH_cooktop_main/samp.py",
-    "firmware_file_path": "D:/FOTA FWs/IH_COOKTOP/04.FOTAUpgrade_Binary/DV1_0xFB14/VerA_SAA94987101_FullBridge_IH_Merged_061F6A83.hex",
-    "last_flashed_date": "2026-01-29 13:04:32",
+    "firmware_file_path": "D:\\FOTA FWs\\IH_COOKTOP\\Tested\\V1_FullBridge_IH_Merged_0x061FEABE.hex",
+    "last_flashed_date": "2026-01-29 14:16:21",
     "flash_status": "success",
     "python_interpreter": "C:\\Users\\vilvakannan.velusamy\\PycharmProjects\\flash_tool_auto\\.venv\\Scripts\\python.exe"
 }

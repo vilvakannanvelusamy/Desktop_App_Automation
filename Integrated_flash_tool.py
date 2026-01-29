@@ -5,7 +5,6 @@ import threading
 import os
 import sys
 import json
-from datetime import datetime
 
 
 class IntegratedFlashTool(ctk.CTk):
@@ -28,22 +27,18 @@ class IntegratedFlashTool(ctk.CTk):
         self.config_frame.grid(row=0, column=0, padx=20, pady=10, sticky="nsew")
 
         # Flash Script Path
-        ctk.CTkLabel(self.config_frame, text="Flash Script Path"
-                                             "py):").grid(row=0, column=0, padx=10, pady=5, sticky="w")
-        self.tool_entry = ctk.CTkEntry(self.config_frame, textvariable=self.tool_path, width=400)
-        self.tool_entry.grid(row=0, column=1, padx=10, pady=5)
+        ctk.CTkLabel(self.config_frame, text="Flash Script Path (.py):").grid(row=0, column=0, padx=10, pady=5, sticky="w")
+        ctk.CTkEntry(self.config_frame, textvariable=self.tool_path, width=400).grid(row=0, column=1, padx=10, pady=5)
         ctk.CTkButton(self.config_frame, text="Browse Script", command=self.browse_tool).grid(row=0, column=2, padx=10)
 
         # Firmware File Path
         ctk.CTkLabel(self.config_frame, text="Firmware File (.hex/.srec):").grid(row=1, column=0, padx=10, pady=5, sticky="w")
-        self.hex_entry = ctk.CTkEntry(self.config_frame, textvariable=self.hex_path, width=400)
-        self.hex_entry.grid(row=1, column=1, padx=10, pady=5)
+        ctk.CTkEntry(self.config_frame, textvariable=self.hex_path, width=400).grid(row=1, column=1, padx=10, pady=5)
         ctk.CTkButton(self.config_frame, text="Browse File", command=self.browse_hex).grid(row=1, column=2, padx=10)
 
         # JSON Config File Path
         ctk.CTkLabel(self.config_frame, text="JSON Config File:").grid(row=2, column=0, padx=10, pady=5, sticky="w")
-        self.config_entry = ctk.CTkEntry(self.config_frame, textvariable=self.config_path, width=400)
-        self.config_entry.grid(row=2, column=1, padx=10, pady=5)
+        ctk.CTkEntry(self.config_frame, textvariable=self.config_path, width=400).grid(row=2, column=1, padx=10, pady=5)
         ctk.CTkButton(self.config_frame, text="Browse Config", command=self.browse_config).grid(row=2, column=2, padx=10)
 
         # JSON Update Options
@@ -158,7 +153,6 @@ class IntegratedFlashTool(ctk.CTk):
             json_window.geometry("600x400")
             
             json_text = ctk.CTkTextbox(json_window, font=("Courier New", 11))
-            print(json_text)
             json_text.pack(fill="both", expand=True, padx=10, pady=10)
             json_text.insert("1.0", json.dumps(data, indent=4))
             json_text.configure(state="disabled")
@@ -206,18 +200,15 @@ class IntegratedFlashTool(ctk.CTk):
 
             process.wait()
 
-            if process.returncode == 0:
-                self.after(0, self.log, "=== Flash Operation Completed Successfully ===")
-                
-                # Update JSON if enabled
-                if self.update_json_enabled.get():
-                    self.after(0, self.update_json_after_flash)
-                else:
-                    self.after(0, lambda: messagebox.showinfo("Success", "Script Executed Successfully!"))
-            else:
-                self.after(0, self.log, f"=== Flash Operation Failed (Exit Code: {process.returncode}) ===")
-                self.after(0,
-                           lambda: messagebox.showerror("Error", f"Script failed with exit code {process.returncode}"))
+            # if process.returncode == 0:
+            #     self.after(0, self.log, "=== Flash Operation Completed Successfully ===")
+            #
+            #     if self.update_json_enabled.get():
+            #         self.after(0, lambda: messagebox.showinfo("Success", "Script Executed Successfully!"))
+            # else:
+            #     self.after(0, self.log, f"=== Flash Operation Failed (Exit Code: {process.returncode}) ===")
+            #     self.after(0,
+            #                lambda: messagebox.showerror("Error", f"Script failed with exit code {process.returncode}"))
 
         except Exception as e:
             self.after(0, self.log, f"SYSTEM ERROR: {str(e)}")
@@ -225,32 +216,7 @@ class IntegratedFlashTool(ctk.CTk):
         finally:
             self.after(0, lambda: self.flash_btn.configure(state="normal", text="RUN PYTHON FLASH SCRIPT"))
 
-    def update_json_after_flash(self):
-        """Update JSON configuration after successful flash operation"""
-        # Read existing JSON to preserve current LXSProgrammer path
-        try:
-            with open(self.config_path.get(), 'r', encoding='utf-8') as f:
-                existing_data = json.load(f)
-        except:
-            existing_data = {}
-        
-        custom_input = {
-            "flash_script_path": self.tool_path.get(),
-            "firmware_file_path": self.hex_path.get(),
-            "last_flashed_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "flash_status": "success",
-            "python_interpreter": sys.executable
-        }
-        
-        # Preserve existing LXSProgrammer path if it exists
-        if "LXSProgrammer_exe_path_dict" in existing_data:
-            custom_input["LXSProgrammer_exe_path_dict"] = existing_data["LXSProgrammer_exe_path_dict"]
-        
-        if self.update_json_file(self.config_path.get(), custom_input):
-            messagebox.showinfo("Success", "Flash operation completed successfully and JSON configuration updated!")
-        else:
-            messagebox.showwarning("Partial Success", "Flash operation completed but JSON update failed. Check log for details.")
-
+    
 
 if __name__ == "__main__":
     # Set appearance to dark mode for a professional look
