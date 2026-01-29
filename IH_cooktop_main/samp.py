@@ -3,49 +3,12 @@ import pyautogui
 from pywinauto import Application, ElementNotFoundError,keyboard
 import popup
 import json
-import os
-import argparse
-import sys
+import config_parser as cp
+config_path = cp.config_path
 
 pyautogui.hotkey('win','d')
 time.sleep(1)
 
-# Get the directory where the script itself is located
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-config_path = os.path.join(BASE_DIR, 'json', 'config_json.json')
-
-def update_config_firmware_path(new_firmware_path):
-    """Update the ih_cooktop_disp_bin_path_dict in the JSON config file"""
-    try:
-        with open(config_path, 'r', encoding='utf-8') as f:
-            config_data = json.load(f)
-        
-        config_data['ih_cooktop_disp_bin_path_dict'] = new_firmware_path
-        
-        with open(config_path, 'w', encoding='utf-8') as f:
-            json.dump(config_data, f, indent=4)
-        
-        print(f"Updated firmware path in config: {new_firmware_path}")
-        return True
-    except Exception as e:
-        print(f"Error updating config: {e}")
-        return False
-
-def parse_arguments():
-    """Parse command line arguments"""
-    parser = argparse.ArgumentParser(description='IH Cooktop Flash Tool with Dynamic Config Update')
-    parser.add_argument('-f', '--firmware', type=str, 
-                       help='Path to firmware file (.hex/.srec)')
-    return parser.parse_args()
-
-# Parse command line arguments
-args = parse_arguments()
-
-# Update config if firmware path provided via command line
-if args.firmware:
-    if not update_config_firmware_path(args.firmware):
-        print("Failed to update config file. Exiting.")
-        sys.exit(1)
 
 with open(config_path) as json_file:
     config_json_data = json.load(json_file)
@@ -53,7 +16,7 @@ with open(config_path) as json_file:
 
 renesas_exe_path_r = r"{}".format(config_json_data["renesas_exe_path_dict"])
 driver_code_path = r"{}".format(config_json_data["driver_code_path_dict"])
-display_binary_path = r"{}".format(config_json_data["ih_cooktop_disp_bin_path_dict"])
+display_binary_path = r"{}".format(config_json_data["firmware_file_path"])
 # drier_code_var = config_json_data["drier_code_var_dict"]
 
 # app = Application(backend='uia').start(r"C:\Program Files (x86)\Renesas Electronics\Programming Tools\Renesas Flash Programmer V3.17\RFPV3.exe")

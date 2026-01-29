@@ -11,7 +11,7 @@ from datetime import datetime
 class IntegratedFlashTool(ctk.CTk):
     def __init__(self):
         super().__init__()
-        self.title("MCU Python Flash Wrapper with JSON Config v2026")
+        self.title("MCU Flash Programmer")
         self.geometry("900x700")
 
         # Configuration State

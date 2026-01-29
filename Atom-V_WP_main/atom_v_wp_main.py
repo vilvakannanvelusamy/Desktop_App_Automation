@@ -5,14 +5,14 @@ import popup
 import json
 
 import os
-import argparse
-import sys
 
 pyautogui.hotkey('win', 'd')
 time.sleep(1)
 
 # Get the directory where the script itself is located
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 config_path = os.path.join(BASE_DIR, 'json', 'config_json.json')
 
 

@@ -3,61 +3,20 @@ import pyautogui
 from pywinauto import Application, ElementNotFoundError
 from tkinter.messagebox import showinfo
 import json
-import argparse
-import sys
+import config_parser as cp
+config_path = cp.config_path
 
 
 # Minimize all the windows by Simulate pressing the Windows key and D key
 pyautogui.hotkey('win','d')
 
-import os
+
 
 # Get the directory where the script itself is located
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-config_path = os.path.join(BASE_DIR, 'json', 'config_json.json')
-
-def update_config_firmware_path(new_firmware_path):
-    """Update the firmware_file_path in the JSON config file"""
-    try:
-        with open(config_path, 'r', encoding='utf-8') as f:
-            config_data = json.load(f)
-        
-        config_data['firmware_file_path'] = new_firmware_path
-        
-        with open(config_path, 'w', encoding='utf-8') as f:
-            json.dump(config_data, f, indent=4)
-        
-        print(f"Updated firmware path in config: {new_firmware_path}")
-        return True
-    except Exception as e:
-        print(f"Error updating config: {e}")
-        return False
-
-def parse_arguments():
-    """Parse command line arguments"""
-    parser = argparse.ArgumentParser(description='MCU Flash Tool with Dynamic Config Update')
-    parser.add_argument('-f', '--firmware', type=str, 
-                       help='Path to firmware file (.hex/.srec)')
-    return parser.parse_args()
-
-# Parse command line arguments
-args = parse_arguments()
-
-# Update config if firmware path provided via command line
-if args.firmware:
-    if not update_config_firmware_path(args.firmware):
-        print("Failed to update config file. Exiting.")
-        sys.exit(1)
-
 print(config_path)
 
 with open(config_path) as json_file:
     config_json_data = json.load(json_file)
-
-
-#
-# with open('json\config_json.json') as json_file:
-#     config_json_data = json.load(json_file)
 
 
 LXSProgrammer_exe_path_r = r"{}".format(config_json_data["LXSProgrammer_exe_path_dict"])
